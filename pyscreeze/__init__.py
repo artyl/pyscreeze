@@ -418,13 +418,13 @@ def showRegionOnScreen(region, outlineColor='red', filename='_showRegionOnScreen
 
 
 @requiresPillow
-def _screenshot_win32(imageFilename=None, region=None):
+def _screenshot_win32(imageFilename=None, region=None, all_screens=False):
     """
     TODO
     """
     # TODO - Use the winapi to get a screenshot, and compare performance with ImageGrab.grab()
     # https://stackoverflow.com/a/3586280/1893164
-    im = ImageGrab.grab()
+    im = ImageGrab.grab(all_screens=all_screens)
     if region is not None:
         assert len(region) == 4, 'region argument must be a tuple of four ints'
         region = [int(x) for x in region]
@@ -434,7 +434,7 @@ def _screenshot_win32(imageFilename=None, region=None):
     return im
 
 
-def _screenshot_osx(imageFilename=None, region=None):
+def _screenshot_osx(imageFilename=None, region=None, all_screens=False):
     """
     TODO
     """
